@@ -1,15 +1,10 @@
-# Gilded Rose starting position in Java
+# Gilded Rose Refactoring
 
-## Run the Text Fixture from Command-Line
+The classes **GildedRose**, **GildedRoseTest** and **TexttestFixture** are still using the gobelin's **Item**.
 
-```
-./gradlew -q text
-```
+The classes **GildedRoseWithStandardItem**, **GildedRoseWithStandardItemTest** and **TexttestFixtureWithStandardItem** are 
+using the new class **StandardItem** encapsulating the gobelin's **Item**.
 
-### Specify Number of Days
 
-For e.g. 10 days:
 
-```
-./gradlew -q text --args 10
-```
+
