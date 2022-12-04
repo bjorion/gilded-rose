@@ -37,6 +37,25 @@ public class GildedRoseTest {
 	}
 
 	@Test
+	void testUpdateQuality__standardItems_qualityDecreated() {
+
+		final int value0 = 10;
+		final int value1 = 20;
+
+		Item[] items = new Item[] { new Item(STD_NAME, value0, value0), new Item(STD_NAME, value1, value1) };
+		GildedRose app = new GildedRose(items);
+
+		app.updateQualityRefactored();
+		assertEquals(STD_NAME, app.getItem(0).name);
+		assertEquals(value0 - 1, app.getItem(0).sellIn);
+		assertEquals(value0 - 1, app.getItem(0).quality);
+
+		assertEquals(STD_NAME, app.getItem(1).name);
+		assertEquals(value1 - 1, app.getItem(1).sellIn);
+		assertEquals(value1 - 1, app.getItem(1).quality);
+	}
+
+	@Test
 	void testUpdateQuality_standardItem_qualityDecreasedGTEmin() {
 
 		final int sellIn = 10;
@@ -138,10 +157,12 @@ public class GildedRoseTest {
 		Item[] items = new Item[] { new Item(BACKSTAGE_PASSES_SUBTYPE, sellIn, quality) };
 		GildedRose app = new GildedRose(items);
 
+		// normal period
 		app.updateQualityRefactored();
 		assertEquals(sellIn - 1, app.getItem(0).sellIn);
 		assertEquals(quality + 1, app.getItem(0).quality);
 
+		// "double" period
 		app.updateQualityRefactored();
 		assertEquals(sellIn - 2, app.getItem(0).sellIn);
 		assertEquals(quality + 3, app.getItem(0).quality);
@@ -157,10 +178,12 @@ public class GildedRoseTest {
 		Item[] items = new Item[] { new Item(BACKSTAGE_PASSES_SUBTYPE, sellIn, quality) };
 		GildedRose app = new GildedRose(items);
 
+		// "double" period
 		app.updateQualityRefactored();
 		assertEquals(sellIn - 1, app.getItem(0).sellIn);
 		assertEquals(quality + 2, app.getItem(0).quality);
 
+		// "triple" period
 		app.updateQualityRefactored();
 		assertEquals(sellIn - 2, app.getItem(0).sellIn);
 		assertEquals(quality + 5, app.getItem(0).quality);
