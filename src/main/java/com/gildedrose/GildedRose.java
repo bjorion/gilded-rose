@@ -26,7 +26,7 @@ public class GildedRose {
 	public void updateQualityRefactored() {
 
 		for (int i = 0; i < items.length; i++) {
-			Item item = getItem(0);
+			Item item = getItem(i);
 			String name = item.name;
 			if (name.startsWith(AGED_BRIE)) {
 				item.sellIn--;
@@ -37,7 +37,6 @@ public class GildedRose {
 			} else if (name.startsWith(BACKSTAGE_PASSES)) {
 				item.sellIn--;
 				item.quality = computeDailyQualityBackstage(item);
-
 			} else if (name.startsWith(CONJURED)) {
 				item.sellIn--;
 				item.quality = computeDailyQualityConjured(item);
@@ -45,7 +44,6 @@ public class GildedRose {
 				item.sellIn--;
 				item.quality = computeDailyQualityDefault(item);
 			}
-
 		}
 	}
 
