@@ -81,7 +81,7 @@ public class GildedRoseWithStandardItemTest {
 		StandardItem[] items = new StandardItem[] { new StandardItem(STD_NAME, sellIn, quality) };
 		GildedRoseWithStandardItem app = new GildedRoseWithStandardItem(items);
 
-		// quality falls to zero
+		// sellIn falls to zero
 		app.updateQuality();
 		assertEquals(sellIn - 1, app.items().get(0).getSellIn());
 		assertEquals(quality - 1, app.items().get(0).getQuality());
